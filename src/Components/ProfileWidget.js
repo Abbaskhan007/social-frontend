@@ -7,6 +7,7 @@ import { AiOutlineTwitter, AiFillLinkedin } from "react-icons/ai";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import url from "../constants";
 
 export default function ProfileWidget() {
   const mode = useSelector(state => state.mode);

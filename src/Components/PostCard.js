@@ -9,6 +9,7 @@ import AddFriend from "./AddFriend";
 import Axios from "axios";
 import { setPost } from "../State";
 import { NavLink } from "react-router-dom";
+import url from "../constants";
 
 export default function PostCard({ post }) {
   const mode = useSelector(state => state.mode);
@@ -29,14 +30,14 @@ export default function PostCard({ post }) {
 
   const handleLike = async () => {
     const { data } = await Axios.patch(
-      `/api/post/likePost/${user._id}/${post._id}`
+      `${url}/api/post/likePost/${user._id}/${post._id}`
     );
     console.log("Data", data);
     dispatch(setPost(data));
   };
 
   const onComment = async () => {
-    const { data } = await Axios.put("/api/post/comment", {
+    const { data } = await Axios.put(`${url}/api/post/comment`, {
       comment,
       userId: user._id,
       postId: post._id,

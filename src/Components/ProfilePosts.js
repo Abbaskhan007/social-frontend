@@ -3,13 +3,14 @@ import PostCard from "./PostCard";
 import Axios from "axios";
 
 import { useParams } from "react-router-dom";
+import url from "../constants";
 
 export default function ProfilePosts() {
   const { id } = useParams();
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
-    const { data } = await Axios.get(`/api/post/${id}/getFeed`);
+    const { data } = await Axios.get(`${url}/api/post/${id}/getFeed`);
     setPosts(data);
     console.log("Data of posts ---", data);
   };

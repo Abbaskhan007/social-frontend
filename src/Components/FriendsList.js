@@ -2,6 +2,7 @@ import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import FriendRow from "./FriendRow";
+import url from "../constants";
 
 export default function FriendsList() {
   const mode = useSelector(state => state.mode);
@@ -9,7 +10,7 @@ export default function FriendsList() {
   const [friends, setFriends] = useState([]);
   const getFriends = async () => {
     console.log("--------- Running");
-    const { data } = await Axios.post(`/api/user/getFriends`, {
+    const { data } = await Axios.post(`${url}/api/user/getFriends`, {
       user: user._id,
     });
     setFriends(data.friendsList);

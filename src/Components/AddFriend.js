@@ -2,13 +2,15 @@ import Axios from "axios";
 import React from "react";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
+import url from "../constants";
 import { setFriends } from "../State";
+
 
 export default function AddFriend({ userId, friendId }) {
   const dispatch = useDispatch();
 
   const addFriend = async () => {
-    const { data } = await Axios.post("/api/user/updateFriend", {
+    const { data } = await Axios.post(`${url}/api/user/updateFriend`, {
       userId,
       friendId,
     });

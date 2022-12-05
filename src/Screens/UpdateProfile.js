@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Axios from "axios";
 import { BiPencil } from "react-icons/bi";
 import { setUser } from "../State";
+import url from "../constants";
 
 export default function UpdateProfile() {
   const user = useSelector(state => state.user);
@@ -59,7 +60,7 @@ export default function UpdateProfile() {
           image: profileImage,
         };
       }
-      const userData = await Axios.post("/api/user/updateProfile", data);
+      const userData = await Axios.post(`${url}/api/user/updateProfile`, data);
       alert("Profile Updated Successfully");
       console.log("User Data -----", userData);
       dispatch(setUser(userData.data));

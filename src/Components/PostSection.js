@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import PostCard from "./PostCard";
 import Axios from "axios";
 import { setPosts } from "../State";
+import url from "../constants";
 
 export default function PostSection() {
   const dispatch = useDispatch();
   const posts = useSelector(state => state.posts);
-  
 
   const getPosts = async () => {
-    const { data } = await Axios.get("/api/post/getFeed");
+    const { data } = await Axios.get(`${url}/api/post/getFeed`);
     dispatch(setPosts(data));
     console.log("Data of posts ---", data);
   };

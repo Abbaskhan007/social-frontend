@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import InputForm from "../Components/InputForm";
 import Axios from "axios";
+import url from "../constants";
 import { setLogin } from "../State";
 
 export default function Login() {
@@ -19,7 +20,10 @@ export default function Login() {
 
   const onSubmit = async () => {
     try {
-      const { data } = await Axios.post("/api/user/login", { email, password });
+      const { data } = await Axios.post(`${url}/api/user/login`, {
+        email,
+        password,
+      });
       dispatch(setLogin(data));
       emptyForm();
       navigate("/home");

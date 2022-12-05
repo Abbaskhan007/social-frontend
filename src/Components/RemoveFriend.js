@@ -3,13 +3,14 @@ import React from "react";
 import { BsPersonDashFill } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 import { setFriends } from "../State";
+import url from "../constants";
 
 export default function RemoveFriend({ userId, friendId }) {
   const dispatch = useDispatch();
   console.log("user --- Id -- d:", userId, friendId);
 
   const removeFriend = async () => {
-    const { data } = await Axios.post("/api/user/updateFriend", {
+    const { data } = await Axios.post(`${url}/api/user/updateFriend`, {
       userId,
       friendId,
     });

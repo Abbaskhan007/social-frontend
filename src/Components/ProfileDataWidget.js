@@ -9,6 +9,7 @@ import { NavLink, useParams } from "react-router-dom";
 import Axios from "axios";
 import RemoveFriend from "./RemoveFriend";
 import AddFriend from "./AddFriend";
+import url from "../constants";
 
 export default function ProfileDataWidget() {
   const mode = useSelector(state => state.mode);
@@ -18,7 +19,7 @@ export default function ProfileDataWidget() {
 
   const { id } = useParams();
   const getUser = async () => {
-    const { data } = await Axios.get(`/api/user/${id}`);
+    const { data } = await Axios.get(`${url}/api/user/${id}`);
     setUser(data);
     console.log("Data of user in profile data widget ---", data);
   };
@@ -44,7 +45,6 @@ export default function ProfileDataWidget() {
     return (
       <div
         style={{ backgroundColor: mode.themeColor }}
-       
         className={`p-3 ${
           mode.theme === "dark" ? "text-gray-400" : "text-gray-500"
         } rounded-md`}

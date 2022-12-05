@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import InputForm from "../Components/InputForm";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
+import url from "../constants";
 
 export default function Registeration() {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ export default function Registeration() {
         "https://api.cloudinary.com/v1_1/dlxyvl6sb/image/upload",
         form
       );
-      const { data } = await Axios.post("/api/user/registeration", {
+      const { data } = await Axios.post(`${url}/api/user/registeration`, {
         firstName,
         lastName,
         email,

@@ -7,6 +7,7 @@ import { AiFillAudio } from "react-icons/ai";
 import Axios from "axios";
 import { setPosts } from "../State";
 import PostSection from "./PostSection";
+import url from "../constants";
 
 export default function MainSection() {
   const user = useSelector(state => state.user);
@@ -33,7 +34,7 @@ export default function MainSection() {
         );
         postData = { ...postData, image: cloudinayResponse.data.url };
       }
-      const { data } = await Axios.post("/api/post/createPost", postData);
+      const { data } = await Axios.post(`${url}/api/post/createPost`, postData);
       console.log("Data -----", data);
       dispatch(setPosts(data));
       setImage("");
