@@ -43,6 +43,7 @@ export default function PostCard({ post }) {
       postId: post._id,
     });
     dispatch(setPost(data.updatedComments));
+    setComment("");
     console.log("Data of comment", data);
   };
 
@@ -92,12 +93,16 @@ export default function PostCard({ post }) {
         <div className="flex items-center space-x-1">
           {Boolean(post.likes[user._id]) ? (
             <AiFillHeart
-              className="text-cyan-400"
+              className="text-cyan-400 cursor-pointer"
               onClick={handleLike}
               size={20}
             />
           ) : (
-            <AiOutlineHeart onClick={handleLike} size={20} />
+            <AiOutlineHeart
+              className="cursor-pointer"
+              onClick={handleLike}
+              size={20}
+            />
           )}
           <span>{likesCount}</span>
         </div>
