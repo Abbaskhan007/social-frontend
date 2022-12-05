@@ -23,7 +23,8 @@ export default function PostCard({ post }) {
 
   useEffect(() => {
     const friendsList = user.friendsList;
-    setIsFriend(friendsList.includes(post.user._id.toString()));
+    console.log("post---", post);
+    setIsFriend(friendsList.includes(post.user?._id?.toString()));
   }, [user]);
 
   const likesCount = Object.keys(post.likes)?.length;

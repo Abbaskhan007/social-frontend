@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <div
       style={{ backgroundColor: mode.themeColor }}
-      className="flex items-center justify-between px-20 py-4 fixed w-full z-20 shadow-md"
+      className="flex items-center justify-between sm:px-20 px-8 py-4 fixed w-full z-20 shadow-md"
     >
       <div className="flex items-center space-x-6">
         <NavLink
@@ -27,14 +27,14 @@ export default function Navbar() {
         </NavLink>
         <div
           onClick={() => searchRef.current.focus()}
-          className={`flex items-center px-4 py-[6px]  ${
+          className={`sm:flex items-center px-4 py-[6px]  hidden ${
             mode.theme === "light" ? "bg-gray-200" : "bg-zinc-700"
           } rounded-md `}
         >
           <input
             ref={searchRef}
             style={{ color: mode.textColor }}
-            className={`bg-transparent text-sm outline-none border-none`}
+            className={`bg-transparent text-sm outline-none border-none `}
             type="text"
             placeholder="Search..."
           />
@@ -47,13 +47,26 @@ export default function Navbar() {
       <div>
         <div className="flex items-center space-x-8">
           <MdDarkMode
+            className="hidden sm:inline-flex"
             onClick={() => dispatch(setMode())}
             color={mode.textColor}
             size={24}
           />
-          <MdOutlineMessage color={mode.textColor} size={24} />
-          <MdNotifications color={mode.textColor} size={24} />
-          <AiFillQuestionCircle color={mode.textColor} size={24} />
+          <MdOutlineMessage
+            className="hidden sm:inline-flex"
+            color={mode.textColor}
+            size={24}
+          />
+          <MdNotifications
+            className="hidden sm:inline-flex"
+            color={mode.textColor}
+            size={24}
+          />
+          <AiFillQuestionCircle
+            className="hidden sm:inline-flex"
+            color={mode.textColor}
+            size={24}
+          />
           {user?._id && (
             <div className="group cursor-pointer bg-transparent relative">
               <div
